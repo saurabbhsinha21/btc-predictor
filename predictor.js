@@ -31,7 +31,7 @@ function calculateRSI(prices, period = 14) {
 
 async function predict() {
   const targetPrice = parseFloat(document.getElementById("targetPrice").value);
-  const targetTimeInput = document.getElementById("targetTime").value.trim();
+  const targetTimeInput = document.getElementById("targetTime").value;
   const output = document.getElementById("output");
 
   if (!targetPrice || !targetTimeInput) {
@@ -39,10 +39,7 @@ async function predict() {
     return;
   }
 
-  const [dateStr, timeStr] = targetTimeInput.split(" ");
-  const [dd, mm, yyyy] = dateStr.split(".").map(Number);
-  const [hh, min] = timeStr.split(":").map(Number);
-  const targetDate = new Date(yyyy, mm - 1, dd, hh, min);
+  const targetDate = new Date(targetTimeInput);
   const now = new Date();
   const minutesAhead = Math.floor((targetDate - now) / 60000);
 
@@ -56,11 +53,9 @@ async function predict() {
   const prices = await fetchPrices();
   lastPrices = prices;
 
-  // Calculate indicators
   const ema = calculateEMA(prices, 10).pop().toFixed(2);
   const rsi = calculateRSI(prices);
 
-  // Prepare TensorFlow model
   const xs = tf.tensor(prices.map((_, i) => i), [prices.length, 1]);
   const ys = tf.tensor(prices, [prices.length, 1]);
 
@@ -87,7 +82,7 @@ async function predict() {
   `;
 }
 
-// Auto-refresh price every 30s
+// Auto-refresh prices every 30 seconds
 setInterval(() => {
   if (lastPrices.length > 0) {
     fetchPrices().then(p => lastPrices = p);
