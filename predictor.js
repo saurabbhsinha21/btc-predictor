@@ -24,7 +24,7 @@ function calculateRSI(prices, period = 14) {
     if (diff >= 0) gains += diff;
     else losses -= diff;
   }
-  let rs = gains / losses;
+  let rs = gains / (losses || 1);
   let rsi = 100 - (100 / (1 + rs));
   return rsi.toFixed(2);
 }
@@ -41,6 +41,12 @@ async function predict() {
 
   const targetDate = new Date(targetTimeInput);
   const now = new Date();
+
+  if (isNaN(targetDate.getTime())) {
+    output.textContent = "⚠️ Invalid date format.";
+    return;
+  }
+
   const minutesAhead = Math.floor((targetDate - now) / 60000);
 
   if (minutesAhead <= 0) {
