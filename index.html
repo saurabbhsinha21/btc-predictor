@@ -6,19 +6,44 @@
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.10.0/dist/tf.min.js"></script>
   <script src="predictor.js" defer></script>
   <style>
-    body { font-family: Arial; max-width: 600px; margin: auto; background: #f2f4f8; padding: 30px; }
-    h2 { text-align: center; }
+    body {
+      font-family: Arial;
+      max-width: 600px;
+      margin: auto;
+      background: #f2f4f8;
+      padding: 30px;
+    }
+    h2 {
+      text-align: center;
+    }
     input, button {
-      width: 100%; padding: 10px; margin: 10px 0;
-      font-size: 1em; border-radius: 5px;
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 1em;
+      border-radius: 5px;
     }
     button {
-      background: #007bff; color: white; border: none;
-      cursor: pointer; font-weight: bold;
+      background: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
     }
-    button:hover { background: #0056b3; }
-    .result { font-size: 1.1em; margin-top: 20px; font-weight: bold; }
-    iframe { margin-top: 30px; width: 100%; height: 400px; border: none; }
+    button:hover {
+      background: #0056b3;
+    }
+    .result {
+      font-size: 1.1em;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    iframe {
+      margin-top: 30px;
+      width: 100%;
+      height: 400px;
+      border: none;
+    }
   </style>
 </head>
 <body>
@@ -28,14 +53,15 @@
   <label>🎯 Target Price (USDT):</label>
   <input type="number" id="targetPrice" placeholder="e.g. 71000">
 
-  <label>🕒 Target Time (dd.mm.yyyy hh:mm):</label>
-  <input type="text" id="targetTime" placeholder="e.g. 09.06.2025 23:45">
+  <label>🕒 Target Time:</label>
+  <input type="datetime-local" id="targetTime">
 
   <button onclick="predict()">🔮 Predict</button>
 
   <div class="result" id="output">Prediction will appear here.</div>
 
-  <iframe src="https://www.tradingview.com/embed-widget/symbol-overview/?locale=en#%7B%22symbols%22:%5B%5B%22BINANCE%3ABTCUSDT%7C1D%22%5D%5D,%22width%22:%22100%25%22,%22height%22:%22400%22,%22theme%22:%22light%22,%22style%22:%221%22%7D"></iframe>
+  <iframe src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_abcdef&symbol=BINANCE:BTCUSDT&interval=1&symboledit=1&saveimage=1&toolbarbg=f1f3f6&studies=[]&theme=Light&style=1&timezone=Etc/UTC&withdateranges=1&hide_side_toolbar=0&allow_symbol_change=true&calendar=1&show_popup_button=1&locale=en"
+    allowtransparency="true" scrolling="no"></iframe>
 
 </body>
 </html>
