@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BTC/USDT Prediction Tool</title>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4f8;
+      padding: 30px;
+      max-width: 500px;
+      margin: auto;
+    }
+    h2 { color: #333; }
+    label { display: block; margin-top: 15px; }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      font-size: 1em;
+    }
+    button {
+      background: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .result {
+      margin-top: 30px;
+      font-size: 1.3em;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>BTC/USDT Prediction Tool</h2>
+
+  <label for="targetPrice">🎯 Target Price (USDT):</label>
+  <input type="number" id="targetPrice" placeholder="e.g. 71000">
+
+  <label for="targetTime">⏰ Target Time (minutes from now):</label>
+  <input type="number" id="targetTime" placeholder="e.g. 30">
+
+  <button onclick="predict()">🔮 Predict</button>
+
+  <div class="result" id="output">Enter values and click Predict.</div>
+
+  <script src="predictor.js"></script>
+</body>
+</html>
