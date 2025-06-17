@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BTC Price Predictor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Bitcoin Price Direction Predictor</h1>
+    <label>Target Price (USDT):</label>
+    <input type="number" id="priceInput" step="0.01">
+    
+    <label>Target Time (YYYY-MM-DD HH:MM):</label>
+    <input type="text" id="timeInput" placeholder="2025-06-17 22:30">
+
+    <button onclick="predict()">Predict</button>
+
+    <div id="result"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
