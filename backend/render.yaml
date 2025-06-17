@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: btc-price-api
+    env: python
+    plan: free
+    buildCommand: ""
+    startCommand: "python app.py"
